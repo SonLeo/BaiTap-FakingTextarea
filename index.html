@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faking Text</title>
+</head>
+
+<style>
+    .header {
+        margin: 28px;
+        text-align: center;
+    }
+
+    #fakingForm {
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    #faking-text {
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <div class="header">
+        <h1>Faking Text</h1>
+    </div>
+
+    <form action="" name="fakingForm" id="fakingForm" method="get">
+        <textarea name="txt" id="faking-text" cols="50" rows="6" placeholder="Type anthing slowly"
+        onkeydown="fakingText()"></textarea>
+    </form>
+
+    <script>
+        let fakingArray = new Array("I", "f", " ", "y", "o", "u", " ", "d", "e", "s", "i", "r", "e", " ", "s", "o", "m", "e", "t", "h", "i", "n", "g", " ", "n", "e", "v", "e", "r", " ", "b", "e", "f", "o", "r", "e", ",", " ", "y", "o", "u", " ", "n", "e", "e", "d", " ", "t", "o", " ", "a", "c", "c", "e", "p", "t", " ", "w", "h", "a", "t", " ", "y", "o", "u", " ", "h", "a", "v", "e", " ", "n", "e", "v", "e", "r", " ", "d", "o", "n", "e", ".", " ", "F", "i", "g", "h", "t", "i", "n", "g", "!", "!", "!");
+        let textDisplay = "";
+        let fakingLength = fakingArray.length;
+        
+        function fakingText() {
+            let textInput = document.getElementById("faking-text").value;
+            let textInputLength = textInput.length;
+            if (textInputLength > 0) {
+                for (let i = 0; i < textInputLength; i++) {
+                    textDisplay += fakingArray[i];
+
+                    if (i == fakingLength) {
+                        document.getElementById("faking-text").value = "";
+                        textDisplay = "";
+                    }
+                }
+            }
+            document.getElementById("faking-text").value = textDisplay;
+            textDisplay = "";
+            setTimeout("fakingText()", 1);
+        }
+    </script>
+</body>
+
+</html>
